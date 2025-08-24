@@ -7,10 +7,14 @@ import BulkAttendanceForm from "@/components/attendance/BulkAttendanceForm";
 import AttendanceReports from "@/components/reports/AttendanceReports";
 
 const Index = () => {
-  const [currentUser] = useState({
-    name: "Sarah Johnson",
-    role: "student" as const, // Change this to test different roles: 'student' | 'teacher' | 'hod' | 'admin'
-    id: "student_001"
+  const [currentUser] = useState<{
+    name: string;
+    role: 'student' | 'teacher' | 'hod' | 'admin';
+    id: string;
+  }>({
+    name: "Prof. Michael Chen",
+    role: "teacher", // Change this to test different roles: 'student' | 'teacher' | 'hod' | 'admin'
+    id: "teacher_001"
   });
   
   const [currentPage, setCurrentPage] = useState("dashboard");
@@ -18,7 +22,11 @@ const Index = () => {
   const renderPageContent = () => {
     switch (currentPage) {
       case "dashboard":
-        return currentUser.role === "student" ? <StudentDashboard /> : <TeacherDashboard />;
+        if (currentUser.role === "student") {
+          return <StudentDashboard />;
+        } else {
+          return <TeacherDashboard />;
+        }
       
       case "calendar":
       case "my-attendance":
