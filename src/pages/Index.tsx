@@ -12,9 +12,9 @@ const Index = () => {
     role: 'student' | 'teacher' | 'hod' | 'admin';
     id: string;
   }>({
-    name: "Prof. Michael Chen",
-    role: "teacher", // Change this to test different roles: 'student' | 'teacher' | 'hod' | 'admin'
-    id: "teacher_001"
+    name: "Dr. Sarah Williams",
+    role: "hod", // Change this to test different roles: 'student' | 'teacher' | 'hod' | 'admin'
+    id: "hod_001"
   });
   
   const [currentPage, setCurrentPage] = useState("dashboard");
